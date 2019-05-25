@@ -27073,7 +27073,42 @@ var _default = (0, _reactRedux.connect)(function (_ref2) {
 }, mapDispatchToProps)(DrawCard);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../actions/deck":"actions/deck.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../actions/deck":"actions/deck.js"}],"components/Card.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Card = function Card(_ref) {
+  var cards = _ref.cards;
+  if (!cards[0]) return null;
+  var _cards$ = cards[0],
+      value = _cards$.value,
+      suit = _cards$.suit,
+      image = _cards$.image;
+  return _react.default.createElement("div", null, _react.default.createElement("h3", null, value, " of ", suit), _react.default.createElement("img", {
+    src: image,
+    alt: "card-image"
+  }));
+};
+
+var _default = (0, _reactRedux.connect)(function (_ref2) {
+  var cards = _ref2.deck.cards;
+  return {
+    cards: cards
+  };
+})(Card);
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27094,6 +27129,8 @@ var _fetchStates = _interopRequireDefault(require("./reducers/fetchStates"));
 var _Instructions = _interopRequireDefault(require("./components/Instructions"));
 
 var _DrawCard = _interopRequireDefault(require("./components/DrawCard"));
+
+var _Card = _interopRequireDefault(require("./components/Card"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27155,7 +27192,7 @@ function (_Component) {
         return _react.default.createElement("div", null, _react.default.createElement("p", null, "Please try reloading the app. An error occured"), _react.default.createElement("p", null, this.props.message));
       }
 
-      return _react.default.createElement("div", null, _react.default.createElement("h2", null, "Evens or Odds"), this.props.gameStarted ? _react.default.createElement("div", null, _react.default.createElement("h3", null, "The game is on!"), _react.default.createElement(_DrawCard.default, null), _react.default.createElement("hr", null), _react.default.createElement("button", {
+      return _react.default.createElement("div", null, _react.default.createElement("h2", null, "Evens or Odds"), this.props.gameStarted ? _react.default.createElement("div", null, _react.default.createElement("h3", null, "The game is on!"), _react.default.createElement(_DrawCard.default, null), _react.default.createElement("hr", null), _react.default.createElement(_Card.default, null), _react.default.createElement("hr", null), _react.default.createElement("button", {
         onClick: this.props.cancelGame
       }, "Cancel Game")) : _react.default.createElement("div", null, _react.default.createElement("h3", null, "A new game awaits"), _react.default.createElement("br", null), _react.default.createElement("button", {
         onClick: this.startGame
@@ -27195,7 +27232,7 @@ var componentConnector = (0, _reactRedux.connect)(mapStateToProps, {
 var _default = componentConnector(App);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","./actions/settings":"actions/settings.js","./actions/deck":"actions/deck.js","./reducers/fetchStates":"reducers/fetchStates.js","./components/Instructions":"components/Instructions.js","./components/DrawCard":"components/DrawCard.js"}],"reducers/settings.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","./actions/settings":"actions/settings.js","./actions/deck":"actions/deck.js","./reducers/fetchStates":"reducers/fetchStates.js","./components/Instructions":"components/Instructions.js","./components/DrawCard":"components/DrawCard.js","./components/Card":"components/Card.js"}],"reducers/settings.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
