@@ -9,9 +9,9 @@ export const cancelGame = () => {
 };
 
 export const expandInstructions = () => {
-  return { type: SET_INSTRUCTIONS_EXPANDED, instructionExpanded: false };
+  return { type: SET_INSTRUCTIONS_EXPANDED, instructionExpanded: true };
 };
 
 export const collapseInstructions = () => {
-  return { type: SET_INSTRUCTIONS_EXPANDED, instructionExpanded: true };
+  return { type: SET_INSTRUCTIONS_EXPANDED, instructionExpanded: false };
 };
